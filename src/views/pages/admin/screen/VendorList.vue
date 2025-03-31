@@ -1,22 +1,22 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import { useVendorStore } from "@/store/vendor.js";
-import { useDebounce } from "@/composables/useDebounce";
-import { useRouter } from "vue-router";
+import { ref, onMounted } from 'vue';
+import { useVendorStore } from '@/store/vendor.js';
+import { useDebounce } from '@/composables/useDebounce';
+import { useRouter } from 'vue-router';
 
 const vendorStore = useVendorStore();
 const router = useRouter();
 const { all } = vendorStore;
 const { debounce } = useDebounce();
-const searchQuery = ref("");
+const searchQuery = ref('');
 const date = ref([]);
 const tableData = ref([]);
 const total = ref(0);
 const currentPage = ref(1);
 const fetchData = async () => {
   const params = {
-    search: searchQuery.value || "",
-    date: date.value || "",
+    search: searchQuery.value || '',
+    date: date.value || '',
     page: currentPage.value,
     per_page: 10,
   };
@@ -26,7 +26,7 @@ const fetchData = async () => {
     total.value = response?.data?.paginate?.total;
     currentPage.value = response?.data?.paginate?.current_page;
   } catch (e) {
-    console.error("Error fetching vendor data:", e);
+    console.error('Error fetching vendor data:', e);
   }
 };
 const handlePageChange = (page) => {
@@ -59,8 +59,8 @@ onMounted(() => {
         clearable
         class="search-input"
         placeholder="Search vendor name..."
-        @input="handleSearch"
         prefix-icon="el-icon-search"
+        @input="handleSearch"
       />
 
       <!-- Date Picker -->
@@ -95,12 +95,7 @@ onMounted(() => {
     <el-empty v-else description="No vendor data available." />
 
     <!-- Pagination -->
-    <el-pagination
-      layout="prev, pager, next"
-      :total="total"
-      class="pagination"
-      @current-change="handlePageChange"
-    />
+    <el-pagination layout="prev, pager, next" :total="total" class="pagination" @current-change="handlePageChange" />
   </div>
 </template>
 
