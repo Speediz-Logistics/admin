@@ -22,7 +22,7 @@ onMounted(() => {
         <div class="col-md-3">
           <div class="bg-light p-3 rounded shadow-sm">
             <p class="text-muted mb-1">Total Users</p>
-            <p class="fs-5 fw-bold">{{data?.data?.total_users}}</p>
+            <p class="fs-5 fw-bold">{{ data?.data?.total_users }}</p>
           </div>
         </div>
         <div class="col-md-3">
